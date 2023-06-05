@@ -1,0 +1,137 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-icon card-header-primary">
+                        <div class="card-icon">
+                            <i class="material-icons">content_copy</i>
+                        </div>
+                        <p class="card-category">Submitted assessments</p>
+                        <h3 class="card-title" *ngIf="submittedAssessments">{{submittedAssessments}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">check</i>Total assessments today
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-icon card-header-success">
+                        <div class="card-icon">
+                            <i class="material-icons">people_alt</i>
+                        </div>
+                        <p class="card-category">Students assessed</p>
+                        <h3 class="card-title" *ngIf="studentsAssessed">{{studentsAssessed}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">person</i>Total students assessed today
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-icon card-header-info">
+                        <div class="card-icon">
+                            <i class="material-icons">list_alt</i>
+                        </div>
+                        <p class="card-category">Learning objectives</p>
+                        <h3 class="card-title" *ngIf="learningObjectives">{{learningObjectives.length}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">task_alt</i>Learning objectives achieved today
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-icon  card-header-danger">
+                        <div class="card-icon">
+                            <i class="material-icons">assignment</i>
+                        </div>
+                        <p class="card-category">Submitted exercises</p>
+                        <h3 class="card-title" *ngIf="submittedExercises">{{submittedExercises}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">grading</i>Total exercises submitted today
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-chart">
+                    <div class="card-header card-header-info">
+                        <div class="ct-chart" id="progressChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Daily Progress</h4>
+                        <p class="card-category">Average progress over the week</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-chart">
+                    <div class="card-header card-header-warning">
+                        <div class="ct-chart" id="subjectProgressChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Subject-wise Progress</h4>
+                        <p class="card-category">Total progress in each subject today</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Subjects covered today</h4>
+                    </div>
+                    <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="subjects">
+                        <tbody>
+                            <tr *ngFor="let s of subjects">
+                                <td>{{s}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Student Progress Statistics</h4>
+                    </div>
+                    <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="progressData">
+                        <thead>
+                            <tr>
+                                <td><b>User Id</b></td>
+                                <td><b>Exercise Id</b></td>
+                                <td><b>Progress</b></td>
+                                <td><b>Subject</b></td>
+                                <td><b>Learning Objective</b></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of progressData">
+                                <td>{{ p.UserId }}</td>
+                                <td>{{ p.ExerciseId }}</td>
+                                <td>{{ p.Progress }}</td>
+                                <td>{{ p.Subject }}</td>
+                                <td>{{ p.LearningObjective }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
